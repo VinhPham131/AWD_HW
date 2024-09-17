@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border: solid 1px #000;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            float: left;
+        }
+        .grey{
+            width: 30px;
+            height: 30px;
+            background-color: grey;
+            border: solid 1px #000;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    for(let i = 1; i <= 6; i++){
+        for(let j = 1; j <= 10; j++){
+            if(i % 2 == 0){
+                document.write("<div class = 'red'></div>");
+            } else {
+                document.write("<div class = 'grey'></div>");
+            }
+        }
+        document.write("<div style='clear:both'></div>");
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            color: rgba(0, 0, 255, 0.591);
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .container{
+            width: 50%;
+            height: 50%;
+            background-color: rgba(128, 128, 128, 0.558);
+            margin: auto;
+            border: solid 3px #ff0000;
+        }
+
+        .h1_sem{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            margin-left: 50px;
+        }
+
+        .div_summarize , .div_sem1, .div_sem2, .div_year{
+            display: flex;
+        }
+
+        #sem1_score{
+            width: 70%;
+            height: 30px;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+
+        #sem2_score{
+            width: 70%;
+            height: 30px;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+        
+        #year_select{
+            width: 50px;
+            height: 30px;
+            margin-top: 16px;
+            margin-left: 10px;
+        }
+
+        .div_result{
+            width: 70%;
+            height: 30px;
+            margin-top: 15px;
+            margin-left: 10px;
+            border: solid 1px #00000057;
+            background-color: white;
+        }
+
+        .h1_result{
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        .div_result {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .result {
+            color: red;
+            font-size: 50px;
+            margin-left: 50px;
+        }
+        
+        .div_button{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 50px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 50x;
+            height: 30px;
+            padding: 5px 10px;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class = "title">BANG DIEM CUA EM</h1>
+        <div class = "div_sem1">
+            <p class = "h1_sem">Semester 1:</p>
+            <input type="text" id="sem1_score" name="sem1_score" placeholder="Enter score">
+        </div>
+        <div class = "div_sem2">
+            <p class = "h1_sem">Semester 2:</p>
+            <input type="text" id="sem2_score" name="sem1_score" placeholder="Enter score">
+        </div>
+        <div class="div_year">
+            <p class="h1_sem">Year:</p>
+            <select id="year_select" name="year">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div class="div_summarize">
+            <p class="h1_sem">Summarize:</p>
+            <div class="div_result">
+                <h1 class="h1_result" id = "sum"></h1>
+            </div>
+        </div>
+        <h1 class = "result" id = "result"></h1>
+        <div class = "div_button">
+            <button id = "submit">OK</button>
+            <button id = "cancel">Cancel</button>
+        </div>
+    </div>
+    <script>
+        //OK button
+        document.getElementById('submit').onclick = function() {
+            var sem1Score = parseFloat(document.getElementById('sem1_score').value);
+            var sem2Score = parseFloat(document.getElementById('sem2_score').value);
+            var year = parseInt(document.getElementById('year_select').value);
+            var result;
+
+            //Summarize
+            if (year == 1) {
+                result = (sem1Score + sem2Score) / 2;
+            } else if (year == 2) {
+                result = (sem1Score + sem2Score * 2) / 3;
+            } else if (year == 3) {
+                result = (sem1Score + sem2Score * 3) / 4;
+            } else {
+                result = (sem1Score + sem2Score * 4) / 5;
+            }
+            document.getElementById("sum").innerHTML = result;
+
+            // Result
+            if (result >= 8) {
+                document.getElementById("result").innerHTML = "Hoc Sinh Gioi";
+            } else if (result >= 6.5) {
+                document.getElementById("result").innerHTML = "Hoc Sinh Kha";
+            } else if (result >= 5) {
+                document.getElementById("result").innerHTML = "Hoc Sinh Trung Binh";
+            } else {
+                document.getElementById("result").innerHTML = "Hoc Sinh Yeu";
+            }
+        }
+    
+        //Cancel button
+        document.getElementById('cancel').onclick = function() {
+            document.getElementById('sem1_score').value = '';
+            document.getElementById('sem2_score').value = '';
+            document.getElementById('year_select').selectedIndex = 0;
+            document.getElementById("sum").innerText = '';
+            document.getElementById("result").innerText = '';
+        }
+
+
+    </script>   
+</body>
+</html> 
