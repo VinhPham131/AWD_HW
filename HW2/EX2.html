@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 50%;
+            background-color: rgba(30, 179, 179, 0.733);
+            margin: 0 auto;
+        }
+        .form {
+            display: grid;
+            padding: 10px;
+        }
+        #Fname, #Pid, #Pname, #Pqa, #Ppri {
+            width: 40%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .button {
+            color: red;
+        }
+        .div_button {
+            display: flex;
+            margin-top: 20px;
+            gap : 10px;
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 90%;
+            margin : 0 auto;
+            border: solid 1px black;
+            
+        }
+        #thead, #tbody {
+            background-color: rgb(9, 243, 243);
+            border: solid 1px black;
+        }
+        .td1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="form"> 
+                <label>Fullname_Customer</label>
+                <input type="text" id="Fname" name="name">
+
+                <label>Id_Pro</label>
+                <input type="text" id="Pid" name="id">
+        
+                <label>Name_Pro</label>
+                <input type="text" id="Pname" name="Pname">
+        
+                <label>Quantity_Pro</label>
+                <input type="text" id="Pqa" name="Pqa">
+        
+                <label>Price_Pro</label>
+                <input type="text" id="Ppri" name="Ppri">
+            
+            <div class="div_button">
+                <button class="button" type="button" onclick = "save()">Save</button>
+                <button class="button" type="button" onclick = "show()">Show</button>
+                <button class="button" type="button" onclick = "reset()">Reset</button>             
+            </div>
+        </form>
+
+        <table class="table">
+            <thead id="thead">
+                <tr>
+                    <th>Auto_Increment</th>
+                    <th>Fullname_Customer</th>
+                    <th>Id_Pro</th>
+                    <th>Name_Pro</th>
+                    <th>Quantity_Pro</th>
+                    <th>Price_Pro</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+    
+    <script>
+        var arr = [];
+        function save () {
+            var name = document.getElementById("Fname").value;
+            var id = document.getElementById("Pid").value;
+            var Pname = document.getElementById("Pname").value;
+            var Pqa = document.getElementById("Pqa").value;
+            var Ppri = document.getElementById("Ppri").value;
+
+            if (!name || !id || !Pname || !Pqa || !Ppri) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            var a = {
+                name: name,
+                id: id,
+                Pname: Pname,
+                Pqa: Pqa,
+                Ppri: Ppri,
+            }
+            console.log(a);
+            arr.push(a);
+        }
+        function show () {
+            var html = '';
+            for (i in arr) {
+                var n = i;
+                n++;
+                html += "<tr>";
+                html += "<td class = 'td1'>" + n + "</td>";
+                html += "<td class = 'td1'>" + arr[i].name + "</td>";
+                html += "<td class = 'td1'>" + arr[i].id + "</td>";
+                html += "<td class = 'td1'>" + arr[i].Pname + "</td>";
+                html += "<td class = 'td1'>" + arr[i].Pqa + "</td>";
+                html += "<td class = 'td1'>" + arr[i].Ppri + "</td>";
+                html += "<td class = 'td1'>" + parseFloat(arr[i].Pqa) + parseFloat(arr[i].Ppri) + "</td>";
+                html += "</tr>";
+            }
+            document.querySelector('tbody').innerHTML = html;
+        }
+        function reset () {
+            document.getElementById("Fname").value = '';
+            document.getElementById("Pid").value = '';
+            document.getElementById("Pname").value = '';
+            document.getElementById("Pqa").value = '';
+            document.getElementById("Ppri").value = '';
+        }
+    </script>
+</body>
+</html>
