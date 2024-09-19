@@ -124,15 +124,15 @@
             var result;
 
             //Summarize
-            if (year == 1) {
-                result = (sem1Score + sem2Score) / 2;
-            } else if (year == 2) {
-                result = (sem1Score + sem2Score * 2) / 3;
-            } else if (year == 3) {
-                result = (sem1Score + sem2Score * 3) / 4;
-            } else {
-                result = (sem1Score + sem2Score * 4) / 5;
-            }
+                if (year == 1) {
+                    result = parseFloat((sem1Score + sem2Score) / 2);
+                } else if (year == 2) {
+                    result = parseFloat((sem1Score + sem2Score * 2) / 3);
+                } else if (year == 3) {
+                    result = parseFloat((sem1Score + sem2Score * 3) / 4);
+                } else {
+                    result = parseFloat((sem1Score + sem2Score * 4) / 5);
+                }
             document.getElementById("sum").innerHTML = result;
 
             // Result

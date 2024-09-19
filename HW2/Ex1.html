@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: solid 1px black;
+            width: 50%;
+            margin: 0 auto;
+        }
+        .title {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 0;
+        }
+        #pname, #pri {
+            width: 50%;
+            padding: 10px;
+            margin-left: 80px;
+        }
+        #qty {
+            width: 50%;
+            padding: 10px;
+            margin-left: 60px;
+        }
+        #frm {
+            padding: 40px;
+        }
+        #tb {
+            width: 70%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            
+        }
+        #thead {
+            background-color: #0d0f58;
+            color: white;
+        }
+        .new-row {
+            background-color: white;
+            color: black;
+            border-bottom: solid 1px rgba(0, 0, 0, 0.144);
+        }   
+        #total, #total1 {
+            display: flex;
+            justify-content: center;
+        }
+        .td1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Clothes</h1>
+        <form id = "frm">
+            <p>
+                Product Name
+                <input type="text" id="pname" name="pname">
+            </p>
+            <p>
+                Product Quantity
+                <input type="text" id="qty" name="qty">
+            </p>
+            <p></p>
+                Product Price
+                <input type="text" id="pri" name="pri">
+            </p>
+            <p>
+                <button type = "button" onclick="add()">Add</button>
+            </p>
+        </form>
+
+        <table id = "tb">
+            <thead id = "thead">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id = "tbody">
+                <tr>
+                    <td id = "total1">Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td id = "total">0</td>
+                </tr>
+        </table>
+    </div>
+    <script>
+        var id = 0;
+        function add() {
+            id++;
+            var pname = frm.pname.value;
+            var qty = frm.qty.value;
+            var pri = frm.pri.value;
+            var sub = qty * pri;
+            var row = "<tr class='new-row'>";
+            row += "<td class = 'td1'>" + id + "</td>";
+            row += "<td class = 'td1'>" + pname + "</td>";
+            row += "<td class = 'td1'>" + qty + "</td>";
+            row += "<td class = 'td1'>" + pri + "</td>";
+            row += "<td class = 'td1'>" + sub + "</td>";
+            row += "</tr>";
+
+            var total = document.getElementById("total").innerHTML;
+
+            total = parseInt(total) + parseInt(sub);
+
+            var row_total = "<tr>";
+                row_total += "<td id = 'total1'>Total</td>";
+                row_total += "<td></td>";
+                row_total += "<td></td>";
+                row_total += "<td></td>";
+                row_total += "<td id = 'total'>" + total + "</td>";
+                row_total += "</tr>";
+
+            document.getElementById("thead").innerHTML += row;
+            document.getElementById("tbody").innerHTML = row_total;
+        }
+    </script>
+</body>
+</html>
