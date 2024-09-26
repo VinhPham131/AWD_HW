@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img {
+            width: 100%;
+            height: 500px;
+        }
+        #card {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .div_array {
+            border: 1px solid rgba(0, 0, 0, 0.089);
+            padding: 10px;
+            max-width: 300px;
+        }
+        .title {
+            text-align: center;
+            color: rgb(173, 11, 11)
+        }
+        #button {
+            background-color: rgb(55, 0, 255);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="container">
+    <h1 class="title">Thời Trang Nam</h1>
+    <div>
+        <card id="card">
+        </card>
+        
+    </div>    
+    <script>
+        var array = 
+            [
+                {
+                    id: "1",
+                    img: "https://th.bing.com/th/id/OIP.d00BGh2ETzwN_Yp3IHLTmAHaLG?rs=1&pid=ImgDetMain",
+                    name: "Quần short kaki",
+                    price: "370.000 VND",
+                },
+
+                {
+                    id: "2",
+                    img: "https://th.bing.com/th/id/OIP.kNeB2_pKdW76RZrvW7QYBwHaHa?rs=1&pid=ImgDetMain",
+                    name: "Quần baggy",
+                    price: "398.000 VND",
+                },
+
+                {
+                    id: "3",
+                    img: "https://th.bing.com/th/id/OIP.yhSH7B8l7dhwPBaL03O3MAHaJM?w=204&h=253&c=7&r=0&o=5&pid=1.7",
+                    name: "Quần tây",
+                    price: "300.000 VND",
+                },
+
+                {
+                    id: "4",
+                    img: "https://th.bing.com/th/id/OIP.GZgQ7oOQ5cnBGAdvBtLr_wHaHa?w=204&h=204&c=7&r=0&o=5&pid=1.7",
+                    name: "Quần jeans nam",
+                    price: "300.000 VND",
+                },
+            ];  
+        var card = document.getElementById("card");
+        for(i = 0; i < array.length; i++){
+            card.innerHTML += `
+            <div class = div_array>
+                <img src="${array[i].img}" id = "img">
+                <h3>${array[i].name}</h3>
+                <p>${array[i].price}</p>
+                <button id = "button">Đặt mua</button>
+            </div>
+            
+            `
+        }
+        
+    </script>
+</body>
+</html>
