@@ -1,0 +1,40 @@
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+main {
+    padding : 50px
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+table {
+    border-collapse: collapse;
+    margin-top: 40px;
+    text-align: center;
+}
+.td_des{
+    width: 30%;
+}
+.tr_body {
+    border-bottom: solid 1px #333;
+}
+thead {
+    background-color: #333;
+    color: white;
+}
+#btn_create {
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-top: 20px;
+}
