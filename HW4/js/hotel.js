@@ -51,9 +51,10 @@ var listLocal = function(){
             <p class = "name">${currentHotel.name}</p>
             <p class = "location">${currentHotel.location}</p>
             <p>${currentHotel.description}</p>
-            <p class = "price">${currentHotel.price}</p>
+            <p class = "price">${currentHotel.price} /night</p>
             <p>Rating: ${currentHotel.rating}</p>
             <button class = "button" id = "btn">Book Now</button>
+            <a href = "detail.html?id=${currentHotel.id}"><button class = "button" id = "btn_view"> View Detail</button></a>
         </div>
         `
     }

@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 2px #000;
+}
+.div_name {
+    display: flex;
+    margin-left: 200px;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 30px;
+    margin-right: 300px;
+}
+.h1 {
+    color: blueviolet;
+}
+#div_details {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    gap: 100px;
+}
+#img {
+    width: 400px;
+    height: 400px;
+}
+.name {
+    font-size: 40px;
+    color: rgb(61, 61, 61);
+    text-align: center;
+}
+.price {
+    color: blueviolet;
+    font-size: 20px;
+}
+.button {
+    padding: 20px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
