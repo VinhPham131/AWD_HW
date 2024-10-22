@@ -1,3 +1,4 @@
+
 const periRec = (width, height) => {
     return (width + height) * 2;
 }
@@ -6,8 +7,17 @@ const areaRec = (width, height) => {
     return width * height;
 }
 
-var width = 10;
-var height = 20;
 
-console.log(`The perimeter of the rectangle is ${periRec(width, height)}`);
-console.log(`The area of the rectangle is ${areaRec(width, height)}`);
+
+const calculate = () => {
+    const width = parseFloat(document.getElementById('width').value);
+    const height = parseFloat(document.getElementById('height').value);
+
+    const peri = periRec(width, height);
+    const area = areaRec(width, height);
+
+    document.getElementById('chuVi').innerHTML = 'Chu vi: ' + peri;
+    document.getElementById('dienTich').innerHTML = 'Dien tich: ' + area;
+}
+
+document.getElementById('submit').addEventListener('click', calculate);
