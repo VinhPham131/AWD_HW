@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Room Booking Form</title>
+<link rel="stylesheet" href="css/style-payment.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <span style="flex: 1; text-align: center;">Payment Process</span>
+    </div>
+    <div class="content">
+        <div class="form-section">
+            <div class="section-title">Guest Information</div>
+            <div class="form-group">
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="number" placeholder="Number" required>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="single-input">
+                <input type="text" id="address1" placeholder="Address   " required>
+            </div>
+            <div class="single-input">
+                <input type="text" id="note" placeholder="Note">
+            </div>
+           <button class="submit-btn" onclick="submitGuestInfo()">Submit</button>
+            
+        </div>
+        <div class="billing-section">
+            <!-- Billing Details -->
+            <div class="section-title">Billing Details</div>
+            <div class="billing-item">
+                <label>Arrival:</label>
+                <label id="arrival"></label>
+            </div>
+            <div class="billing-item">
+                <label>Departure:</label>
+                <label id="departure"></label>
+            </div>
+            <div class="billing-item">
+                <label>Length of Stay:</label>
+                <label id="lengthOfStay"></label>
+            </div>
+            <div class="billing-item">
+                <label>Room:</label>
+                <label id="room"></label>
+            </div>
+            <div class="billing-item">
+                <label>Guests:</label>
+                <label id="guests"></label>
+            </div>
+            <div class="billing-item">
+                <label>Room Fee:</label>
+                <label id = "hotelFee">$450</label>
+            </div>
+            <div class="billing-item">
+                <label>Additional Services Charges:</label>
+                <label id = "additionalCharges">$0</label>
+            </div>    
+            <div class="billing-item">
+                <label>Total Cost:</label>
+                <label id = "totalCost"></label>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/payment.js"></script>
+</body>
+</html>

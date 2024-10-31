@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Availability</title>
+    <link rel="stylesheet" href="css/styles-booking.css">
+</head>
+<body>
+
+<div class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Booking Room</div>
+            <div class="icon">⚡</div>
+        </div>
+
+        <form id="bookingForm" class="modal-body">
+            <div class="form-group">
+                <input type="date" id="checkInDate" placeholder="Check-In Date" required>
+                <input type="date" id="checkOutDate" placeholder="Check-Out Date" required>
+                <input type="number" id="numAdults" placeholder="Number of Adults" required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" id="numChildren" placeholder="Number of Children">
+                <select id="rooms" required>
+                    <option value="0" disabled selected>Room</option>
+                    <option value="1">Family Room</option>
+                    <option value="2">Deluxe Room</option>
+                    <option value="3">Standard Room</option>
+                    <option value="4">Luxury Room</option>
+                </select>
+            </div>
+            <div class = "modal-title">Additional Charges</div>
+            <div class="form-group features-container">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-check">Book Now</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/booking.js"></script>
+</body>
+</html>

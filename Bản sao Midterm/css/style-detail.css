@@ -1,0 +1,46 @@
+.detail {
+    display: flex;
+    gap: 100px;
+    padding: 40px;
+    margin-top: 80px;
+}
+.img {
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+    margin-left: 70px;
+}
+.price-rating {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.name {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+p {
+    font-size: 20px;
+}
+.description {
+    text-align: center;
+}
+.div-feature h2 {
+    text-align: center;
+}
+li {
+    font-size: 20px;
+}
+.info {
+    padding: 20px;
+    margin-top: 30px;
+}
+.div-name {
+    background-color: #f0f0f0;
+    padding: 5px;
+}
+#div_details {
+    background-color: antiquewhite;
+    height: 100vh;
+}
