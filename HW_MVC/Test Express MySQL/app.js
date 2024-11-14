@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const rectangleRoutes = require('./routes/rectangleRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // Sử dụng EJS làm view engine
 app.set('view engine', 'ejs');

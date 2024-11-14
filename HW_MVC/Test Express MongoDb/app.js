@@ -8,9 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;															
 															
 // Kết nối MongoDB															
-mongoose.connect(process.env.MONGODB_URI)															
-        .then(() => console.log('MongoDB connected'))															
-        .catch(err => console.log(err));															
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));														
 															
 // Sử dụng EJS làm view engine															
 app.set('view engine', 'ejs');															

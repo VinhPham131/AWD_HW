@@ -37,8 +37,8 @@ const saveRectangleData = (height, width, perimeter, area) => {
     };														
 		
     
-    module.exports =  {
-        Rectangle,
-        saveRectangleData
-    }
+module.exports =  {
+    Rectangle,
+    saveRectangleData
+};
 													
