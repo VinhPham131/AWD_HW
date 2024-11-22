@@ -1,24 +1,62 @@
 const foodModel = require('../models/food.model');
+const categoryModel = require('../models/category.model');
 
 module.exports = {
-    createFood : async (req, res) => {
-        const body = req.body;
-        const newFood = await foodModel.create(body);
-        return res.status(201).json(newFood);
+    // Create a new food item
+    createFood: async (req, res) => {
+        try {
+            const body = req.body;
+            const newFood = await foodModel.create(body);
+            // Redirect back to the food list page after creation
+            res.redirect('/foods');
+        } catch (error) {
+            console.error('Error creating food:', error);
+            res.status(500).send('Failed to create food.');
+        }
     },
-    getFoods : async (req, res) => {
-        const foods = await foodModel.find();
-        return res.status(200).json(foods);
+
+    // Get all food items and categories
+    getFoods: async (req, res) => {
+        try {
+            const foods = await foodModel.find().populate("category_id");
+            const categories = await categoryModel.find(); // Fetch categories
+            res.render("food", { foods, categories });
+        } catch (error) {
+            console.error('Error fetching foods:', error);
+            res.status(500).send('Failed to fetch foods.');
+        }
     },
-    updateFood : async (req, res) => {
-        const id = req.params.id;
-        const body = req.body;
-        const updateFood = await foodModel.findByIdAndUpdate(id, body, {new: true});
-        return res.status(200).json(updateFood);
+
+    // Update an existing food item
+    updateFood: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const body = req.body;
+            const updatedFood = await foodModel.findByIdAndUpdate(id, body, { new: true });
+            if (!updatedFood) {
+                return res.status(404).send('Food item not found.');
+            }
+            // Redirect back to the food list page after update
+            res.redirect('/foods');
+        } catch (error) {
+            console.error('Error updating food:', error);
+            res.status(500).send('Failed to update food.');
+        }
     },
-    deleteFood : async (req, res) => {
-        const id = req.params.id;
-        const deleteFood = await foodModel.findByIdAndDelete(id);
-        return res.status(200).json(deleteFood);
+
+    // Delete a food item
+    deleteFood: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const deletedFood = await foodModel.findByIdAndDelete(id);
+            if (!deletedFood) {
+                return res.status(404).send('Food item not found.');
+            }
+            // Redirect back to the food list page after deletion
+            res.redirect(`/foods`);
+        } catch (error) {
+            console.error('Error deleting food:', error);
+            res.status(500).send('Failed to delete food.');
+        }
     }
-}
+};

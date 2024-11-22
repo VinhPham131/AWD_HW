@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Items</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Food Items</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Address</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% foods.forEach((food, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= food.name %></td>
+            <td><img src="<%= food.img %>" style="width: 100px; height: 100px;"></td>
+            <td>$<%= food.price.toFixed(2) %></td>
+            <td><%= food.address %></td>
+            <td><%= food.category_id ? food.category_id.name : 'N/A' %></td>
+            <td>
+              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editFoodModal-<%= food._id %>">Edit</button>
+              <form action="/foods/<%= food._id %>?_method=DELETE" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>            
+            </td>
+          </tr>
+
+          <!-- Edit Food Modal -->
+          <div class="modal fade" id="editFoodModal-<%= food._id %>" tabindex="-1" aria-labelledby="editFoodModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Food</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/foods/<%= food._id %>?_method=PUT" method="POST">
+                        <input type="hidden" name="_method" value="PUT">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="name" name="name" value="<%= food.name %>" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="img" class="form-label">Image URL</label>
+                      <input type="text" class="form-control" id="img" name="img" value="<%= food.img %>" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Price</label>
+                      <input type="number" class="form-control" id="price" name="price" value="<%= food.price %>" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="address" name="address" value="<%= food.address %>" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="category_id" class="form-label">Category</label>
+                      <select class="form-select" id="category_id" name="category_id" required>
+                        <% categories.forEach(category => { %>
+                          <option value="<%= category._id %>" <%= food.category_id && food.category_id._id.toString() === category._id.toString() ? 'selected' : '' %>>
+                            <%= category.name %>
+                          </option>
+                        <% }) %>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </tbody>
+    </table>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createFoodModal">Add New Food</button>
+  </div>
+
+  <!-- Create Food Modal -->
+  <div class="modal fade" id="createFoodModal" tabindex="-1" aria-labelledby="createFoodModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Food</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/foods" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="img" class="form-label">Image URL</label>
+              <input type="text" class="form-control" id="img" name="img" required>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="mb-3">
+              <label for="category_id" class="form-label">Category</label>
+              <select class="form-select" id="category_id" name="category_id" required>
+                <% categories.forEach(category => { %>
+                  <option value="<%= category._id %>"><%= category.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
