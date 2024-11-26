@@ -4,7 +4,7 @@ const connectDB = require('./configs/database');
 const router = require('./routes');
 const bodyParser = require('body-parser');		
 
-PORT = process.env.PORT || 4002;
+PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

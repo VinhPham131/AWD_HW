@@ -19,7 +19,7 @@ module.exports = {
     getFoods: async (req, res) => {
         try {
             const foods = await foodModel.find().populate("category_id");
-            const categories = await categoryModel.find(); // Fetch categories
+            const categories = await categoryModel.find(); 
             res.render("food", { foods, categories });
         } catch (error) {
             console.error('Error fetching foods:', error);
